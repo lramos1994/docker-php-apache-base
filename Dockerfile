@@ -83,4 +83,4 @@ RUN apt-get update \
 
 # Start!
 COPY ./start /usr/local/bin/
-CMD ["start", "cron -f"]
+CMD ["start"]

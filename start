@@ -37,5 +37,5 @@ fi;
 if [ "$SSMTP_AUTH_PASS" ]; then
     echo "AuthPass=$SSMTP_AUTH_PASS" >> /etc/ssmtp/ssmtp.conf
 fi;
-
+exec "service cron start"
 exec "apache2-foreground"
