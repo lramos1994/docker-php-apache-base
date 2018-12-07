@@ -77,10 +77,10 @@ RUN apt-get update \
 
 # Install MySQL CLI Client
 RUN apt-get update \
-    && apt-get install -y mysql-client
+    && apt-get install -y mysql-client cron nano
 
 ########################################################################################################################
 
 # Start!
 COPY ./start /usr/local/bin/
-CMD ["start"]
+CMD ["start", "cron -f"]
