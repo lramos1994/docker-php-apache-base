@@ -55,7 +55,7 @@ RUN apt-get update \
     && docker-php-ext-install xsl
 
 # Define PHP_TIMEZONE env variable
-ENV PHP_TIMEZONE Europe/Rome
+ENV PHP_TIMEZONE America/Sao_Paulo
 
 # Configure Apache Document Root
 ENV APACHE_DOC_ROOT /var/www/html
@@ -77,7 +77,10 @@ RUN apt-get update \
 
 # Install MySQL CLI Client
 RUN apt-get update \
-    && apt-get install -y mysql-client cron nano
+    && apt-get install -y mysql-client
+
+# Install Local Helpers
+RUN apt-get clean && apt-get update && apt-get install -y locales
 
 ########################################################################################################################
 
