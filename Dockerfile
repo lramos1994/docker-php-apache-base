@@ -27,6 +27,14 @@ COPY ./99-xdebug.ini.disabled /usr/local/etc/php/conf.d/
 # Install Mysql
 RUN docker-php-ext-install mysqli pdo_mysql
 
+# Install LDAP
+RUN \
+    apt-get update && \
+    apt-get install libldap2-dev -y && \
+    rm -rf /var/lib/apt/lists/* && \
+    docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && \
+    docker-php-ext-install ldap
+
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer
